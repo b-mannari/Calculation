@@ -6,11 +6,13 @@ namespace Calculation
 {
     public class Calculate
     {
+        //Check if the string passed is a valid decimal number
         public static bool IsValidNumber(string str)
         {
             return decimal.TryParse(str, out decimal num);
         }
 
+        //This method will calculate the result based on the operator
         public static decimal CalculeResult(int opt, decimal firstNum, decimal secondNum)
         {
             decimal result = 0;
