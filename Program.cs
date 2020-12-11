@@ -7,6 +7,7 @@ namespace Calculation
         static void Main(string[] args)
         {
         Start:
+            //Display user with options to choose
             Console.Clear();
             Console.WriteLine("1.	Addition:");
             Console.WriteLine("2.	Subtraction:");
@@ -15,26 +16,48 @@ namespace Calculation
             Console.WriteLine("Please enter your choice");
             string opt = Console.ReadLine();
 
-            if (string.IsNullOrEmpty(opt)) { Console.WriteLine("Please choose numbers between 1 and 4"); goto Start; }
-            if (Convert.ToInt32(opt) <= 0 || Convert.ToInt32(opt) > 4) { Console.WriteLine("Please choose numbers between 1 and 4"); goto Start; }
+            //Check if the input option value is not empty
+            if (string.IsNullOrEmpty(opt))
+            {
+                Console.WriteLine("Please choose numbers between 1 and 4"); goto Start;
+            }
+            //Check if the input option value is between 1 and 4
+            if (Convert.ToInt32(opt) < 1 || Convert.ToInt32(opt) > 4)
+            {
+                Console.WriteLine("Please choose numbers between 1 and 4"); goto Start;
+            }
             Console.WriteLine("You have choosen: " + opt);
 
         FirstInPut:
             Console.WriteLine("Enter the first Number:");
             string first = Console.ReadLine();
-            if (string.IsNullOrEmpty(first) || !Calculate.IsValidNumber(first)) { Console.WriteLine("Please enter a valid number:"); goto FirstInPut; }
+            //Check if the first number is not empty and is valid number
+            if (string.IsNullOrEmpty(first) || !Calculate.IsValidNumber(first))
+            {
+                Console.WriteLine("Please enter a valid number:"); goto FirstInPut;
+            }
 
         SecondInPut:
             Console.WriteLine("Enter the second Number:");
             string second = Console.ReadLine();
-            if (string.IsNullOrEmpty(second) || !Calculate.IsValidNumber(second)) { Console.WriteLine("Please enter a valid number:"); goto SecondInPut; }
+            //Check if the second number is not empty and is valid number
+            if (string.IsNullOrEmpty(second) || !Calculate.IsValidNumber(second))
+            {
+                Console.WriteLine("Please enter a valid number:"); goto SecondInPut;
+            }
 
-            decimal firstNum; decimal secondNum; decimal result;
-            firstNum = Convert.ToDecimal(first);
-            secondNum = Convert.ToDecimal(second);
+            //Convert the input values to valid numbers 
+            decimal firstNum = Convert.ToDecimal(first);
+            decimal secondNum = Convert.ToDecimal(second);
 
-            if (Convert.ToInt32(opt) == 4 && secondNum == 0) { Console.WriteLine("Cant divide by zero"); return; }
-            result = Calculate.CalculeResult(Convert.ToInt32(opt), firstNum, secondNum);
+            //Display error when the option selected is division and second number is Zero 
+            if (Convert.ToInt32(opt) == 4 && secondNum == 0)
+            {
+                Console.WriteLine("Cant divide by zero"); return;
+            }
+
+            //Pass the Option value, first number and the second number to CalculeResult method to get the required result
+            decimal result = Calculate.CalculeResult(Convert.ToInt32(opt), firstNum, secondNum);
             Console.WriteLine("The Result is = " + result);
         }
     }
