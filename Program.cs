@@ -28,22 +28,22 @@ namespace Calculation
             }
             Console.WriteLine("You have choosen: " + opt);
 
-        FirstInPut:
+        FirstValInPut:
             Console.WriteLine("Enter the first Number:");
             string first = Console.ReadLine();
             //Check if the first number is not empty and is valid number
             if (string.IsNullOrEmpty(first) || !Calculate.IsValidNumber(first))
             {
-                Console.WriteLine("Please enter a valid number:"); goto FirstInPut;
+                Console.WriteLine("Please enter a valid number:"); goto FirstValInPut;
             }
 
-        SecondInPut:
+        SecondValInPut:
             Console.WriteLine("Enter the second Number:");
             string second = Console.ReadLine();
             //Check if the second number is not empty and is valid number
             if (string.IsNullOrEmpty(second) || !Calculate.IsValidNumber(second))
             {
-                Console.WriteLine("Please enter a valid number:"); goto SecondInPut;
+                Console.WriteLine("Please enter a valid number:"); goto SecondValInPut;
             }
 
             //Convert the input values to valid numbers 
