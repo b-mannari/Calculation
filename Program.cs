@@ -2,10 +2,12 @@
 
 namespace Calculation
 {
+    //console calculator application
     class Program
     {
         static void Main(string[] args)
         {
+
         Start:
             //Display user with options to choose
             Console.Clear();
@@ -16,13 +18,7 @@ namespace Calculation
             Console.WriteLine("Please enter your choice");
             string opt = Console.ReadLine();
 
-            //Check if the input option value is not empty
-            if (string.IsNullOrEmpty(opt))
-            {
-                Console.WriteLine("Please choose numbers between 1 and 4"); goto Start;
-            }
-            //Check if the input option value is between 1 and 4
-            if (Convert.ToInt32(opt) < 1 || Convert.ToInt32(opt) > 4)
+            if (!Validation.IsValidOption(opt))
             {
                 Console.WriteLine("Please choose numbers between 1 and 4"); goto Start;
             }
@@ -32,7 +28,7 @@ namespace Calculation
             Console.WriteLine("Enter the first Number:");
             string first = Console.ReadLine();
             //Check if the first number is not empty and is valid number
-            if (string.IsNullOrEmpty(first) || !Calculate.IsValidNumber(first))
+            if (!Validation.isValidInPutValue(first))
             {
                 Console.WriteLine("Please enter a valid number:"); goto FirstValInPut;
             }
@@ -41,7 +37,7 @@ namespace Calculation
             Console.WriteLine("Enter the second Number:");
             string second = Console.ReadLine();
             //Check if the second number is not empty and is valid number
-            if (string.IsNullOrEmpty(second) || !Calculate.IsValidNumber(second))
+            if (!Validation.isValidInPutValue(second))
             {
                 Console.WriteLine("Please enter a valid number:"); goto SecondValInPut;
             }
@@ -51,7 +47,7 @@ namespace Calculation
             decimal secondNum = Convert.ToDecimal(second);
 
             //Display error when the option selected is division and second number is Zero 
-            if (Convert.ToInt32(opt) == 4 && secondNum == 0)
+            if (!Validation.checkIsDivideByZero(Convert.ToInt32(opt), secondNum))
             {
                 Console.WriteLine("Cant divide by zero"); return;
             }

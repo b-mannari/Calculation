@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Calculation
+﻿namespace Calculation
 {
     public class Calculate
     {
-        //Method to check if the string passed is a valid decimal number
-        public static bool IsValidNumber(string str)
-        {
-            return decimal.TryParse(str, out decimal num);
-        }
-
         //Method to calculate the result based on the operator, first number and second number
         public static decimal CalculeResult(int opt, decimal firstNum, decimal secondNum)
         {
